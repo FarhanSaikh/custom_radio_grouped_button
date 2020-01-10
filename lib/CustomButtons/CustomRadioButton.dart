@@ -9,6 +9,7 @@ class CustomRadioButton extends StatefulWidget {
     this.buttonColor,
     this.selectedColor,
     this.hight = 35,
+    this.currentSelected,
     this.width = 100,
     this.horizontal = false,
     this.enableShape = false,
@@ -24,6 +25,7 @@ class CustomRadioButton extends StatefulWidget {
 
   final double hight;
   final double width;
+  final int currentSelected;
 
   final List<String> buttonLables;
 
@@ -40,13 +42,19 @@ class CustomRadioButton extends StatefulWidget {
 }
 
 class _CustomRadioButtonState extends State<CustomRadioButton> {
-  int currentSelected = 0;
+  int currentSelected;
   String currentSelectedLabel;
 
   @override
   void initState() {
     super.initState();
-    currentSelectedLabel = widget.buttonLables[0];
+    //currentSelectedLabel = widget.buttonLables[0];
+    
+    if(widget.currentSelected!=null){
+      currentSelectedLabel = widget.buttonLables[widget.currentSelected];
+
+    }
+    
   }
 
   List<Widget> buildButtonsColumn() {
